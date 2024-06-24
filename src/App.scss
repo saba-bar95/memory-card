@@ -1,0 +1,24 @@
+.container {
+  padding: 50px 130px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  row-gap: 30px;
+  column-gap: 20px;
+
+  .pokemon {
+    text-align: center;
+    border: 2px solid #f59e0b;
+    border-radius: 10px;
+    background-color: darkslategray;
+    &:hover {
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+    }
+
+    h1 {
+      text-transform: capitalize;
+      font-size: 1.25rem;
+      font-family: "Courier New", Courier, monospace;
+    }
+  }
+}
