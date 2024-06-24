@@ -1,8 +1,25 @@
-# React + Vite
+## Project: Memory Card
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## This project is done as part of [Odin Course](https://www.theodinproject.com/)
 
-Currently, two official plugins are available:
+Clicking on an image in a memory game gives you a score; however, clicking the same image twice resets the score.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Build with
+
+### Technologies
+
+- React JS
+- SCSS
+
+### Tools
+
+- Vite
+- Visual Studio Code
+- Git and Github
+- NPM
+- Eslint
+- Prettier
+
+## [Live URL](https://memory-card-alpha-bay.vercel.app/)
+
+## [Author](https://github.com/saba-bar95)
