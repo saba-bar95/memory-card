@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { increaseScore } from "./Scoreboard";
 
 function App() {
   const [shuffledData, setShuffledData] = useState([]);
   const [pokemonImages, setPokemonImages] = useState({});
+  const [selectedPokemons, setSelectedPokemons] = useState([]);
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=12&offset=150")
@@ -13,6 +15,12 @@ function App() {
         fetchPokemonImages(pokemonList);
       });
   }, []);
+
+  useEffect(() => {
+    if (shuffledData.length > 0) {
+      fetchPokemonImages(shuffledData);
+    }
+  }, [shuffledData]);
 
   const fetchPokemonImages = (pokemonList) => {
     pokemonList.forEach((pokemon) => {
@@ -27,8 +35,21 @@ function App() {
     });
   };
 
-  const handleShuffle = () => {
+  const handleShuffle = (event) => {
     setShuffledData(shuffleArray(shuffledData));
+    const pokemonName = event.classList[1];
+    if (selectedPokemons.includes(pokemonName)) {
+      increaseScore(null);
+      setSelectedPokemons([]);
+      return;
+    }
+    setSelectedPokemons(addPokemons(pokemonName));
+    increaseScore();
+  };
+
+  const addPokemons = (name) => {
+    const newArray = [...selectedPokemons, name];
+    return newArray;
   };
 
   const shuffleArray = (array) => {
@@ -45,8 +66,13 @@ function App() {
       {shuffledData && (
         <div className="container">
           {shuffledData.map((item) => {
+            const classNames = `pokemon ${item.name}`;
             return (
-              <div key={item.name} className="pokemon" onClick={handleShuffle}>
+              <div
+                key={item.name}
+                className={classNames}
+                onClick={(event) => handleShuffle(event.currentTarget)}
+              >
                 <img src={pokemonImages[item.name]} alt={item.name} />
                 <h1> {item.name} </h1>
               </div>
